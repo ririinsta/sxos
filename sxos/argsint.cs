@@ -6,17 +6,11 @@ using System.Threading.Tasks;
 
 namespace sxos
 {
-    class Program
+    public class argsint
     {
-        static void Main(string[] args)
+        public void inter(string[] args)
         {
-            if (args.Length >= 1)
-            {
 
-            } else
-            {
-
-            }
         }
     }
 }
