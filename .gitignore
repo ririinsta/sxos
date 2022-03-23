@@ -4,3 +4,8 @@
 .vs/sxos/v15/Server/sqlite3/storage.ide
 .vs/sxos/v15/Server/sqlite3/storage.ide-shm
 .vs/sxos/v15/Server/sqlite3/storage.ide-wal
+*.exe
+sxos/bin/Debug/sxos.exe.config
+sxos/obj/Debug/sxos.csproj.FileListAbsolute.txt
+sxos/obj/Debug/sxos.pdb
+sxos/bin/Debug/sxos.pdb
