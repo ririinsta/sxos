@@ -28,6 +28,8 @@ namespace sxos
                 case "printline":
                     Console.WriteLine("tets");
                     break;
+                case "print":
+                    break;
                 default:
                     Console.WriteLine(line);
                     break;
