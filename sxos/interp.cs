@@ -8,17 +8,20 @@ namespace sxos
 {
     public class interp
     {
-        public void send(string line)
+        public void send(string[] linze)
         {
-            string[] vs = line.Split('.');
-            if (vs[0] == "sys")
+            foreach (string line in linze)
             {
-                sys(line);
-            }
-            else if (vs[0] == "calc")
-            {
-                calc(line);
-            }
+                string[] vs = line.Split('.');
+                if (vs[0] == "sys")
+                {
+                    sys(line);
+                }
+                else if (vs[0] == "calc")
+                {
+                    calc(line);
+                }
+            }  
         }
         public void sys(string line)
         {

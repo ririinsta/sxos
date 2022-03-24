@@ -15,6 +15,8 @@ namespace sxos
             {
                 case "-c":
                     string[] lines = File.ReadAllLines(args[1]);
+                    interp inter = new interp();
+                    inter.send(lines);
                     break;
             }
         }
