@@ -137,7 +137,11 @@ namespace sxos
                     }
                     break;
                 default:
-                    Console.WriteLine(line);
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--- ERROR ---");
+                    Console.ResetColor();
+                    Console.WriteLine("Function " + vs[1].Split('(')[0] + " doesn't exist in the sys class!");
+                    Console.WriteLine("Line " + (linen + 1) + " " + line);
                     break;
             }
         }
