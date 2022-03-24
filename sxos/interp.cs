@@ -10,13 +10,14 @@ namespace sxos
     {
         public void send(string[] linze)
         {
+            int linrer = 0;
             foreach (string line in linze)
             {
                 string[] vs = line.Split('.');
                 if (vs[0] == "sys")
                 {
                     //Console.WriteLine("sys");
-                    sys(line);
+                    sys(line, linrer);
                 }
                 else if (vs[0] == "calc")
                 {
@@ -27,16 +28,44 @@ namespace sxos
                 {
                     Console.WriteLine("shit is broken");
                 }
+                linrer++;
             }  
         }
-        public void sys(string line)
+        public void sys(string line, int linen)
         {
             string[] vs = line.Split('.');
             switch (vs[1].Split('(')[0])
             {
                 case "printline":
-                    string[] cs = vs[1].Split('(');
-                    string[] cs2 = cs[1].Split('"');
+                    string[] cs = { };
+                    string[] cs2 = { };
+                    try
+                    {
+                        cs = vs[1].Split('(');
+                    }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.WriteLine("--- ERROR ---");
+                        Console.ResetColor();
+                        Console.WriteLine("Parsing failed! Check your code!");
+                        Console.WriteLine("Error on line " + (linen + 1) + " " + line);
+                        return;
+                    }
+
+                    try
+                    {
+                        cs2 = cs[1].Split('"');
+                    } 
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.WriteLine("--- ERROR ---");
+                        Console.ResetColor();
+                        Console.WriteLine("Parsing failed! Check your code!");
+                        Console.WriteLine("Error on line " + (linen + 1) + " " + line);
+                        return;
+                    }
                     //Console.WriteLine(cs2[0]);
                     if (cs2[0] == "printline")
                     {
@@ -58,8 +87,35 @@ namespace sxos
                     }
                     break;
                 case "print":
-                    string[] cs22 = vs[1].Split('(');
-                    string[] cs222 = cs22[1].Split('"');
+                    string[] cs22 = {};
+                    string[] cs222 = {};
+                    try
+                    {
+                        cs22 = vs[1].Split('(');
+                    }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.WriteLine("--- ERROR ---");
+                        Console.ResetColor();
+                        Console.WriteLine("Parsing failed! Check your code!");
+                        Console.WriteLine("Error on line " + (linen + 1) + " " + line);
+                        return;
+                    }
+
+                    try
+                    {
+                        cs222 = cs22[1].Split('"');
+                    }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.WriteLine("--- ERROR ---");
+                        Console.ResetColor();
+                        Console.WriteLine("Parsing failed! Check your code!");
+                        Console.WriteLine("Error on line " + (linen + 1) + " " + line);
+                        return;
+                    }
                     //Console.Write(cs222[0]);
                     if (cs222[0] == "print")
                     {
