@@ -12,10 +12,13 @@ namespace sxos
         {
             if (args.Length >= 1)
             {
-
-            } else
+                //Console.WriteLine("yes");
+                argsint argsint = new argsint();
+                argsint.inter(args);
+            } 
+            else
             {
-
+                Console.WriteLine("no");
             }
         }
     }
