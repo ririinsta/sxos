@@ -18,7 +18,8 @@ namespace sxos
             } 
             else
             {
-                Console.WriteLine("no");
+                argsint argz = new argsint();
+                argz.help();
             }
         }
     }

@@ -22,7 +22,7 @@ namespace sxos
                 else if (vs[0] == "calc")
                 {
                     //Console.WriteLine("calc");
-                    calc(line);
+                    calc(line, linrer);
                 }
                 else
                 {
@@ -145,9 +145,48 @@ namespace sxos
                     break;
             }
         }
-        public void calc(string line)
+        public void calc(string line, int linen)
         {
-
+            List<string> vs = new List<String>();
+            vs = line.Split('.').ToList();
+            vs.RemoveAt(0);
+            vs = vs[0].Split('(').ToList();
+            vs[1] = vs[1].Remove(vs[1].Length - 1, 1);
+            switch (vs[0])
+            {
+                case "parse":
+                    vs.RemoveAt(0);
+                    vs = vs[0].Split(',').ToList();
+                    vs[1] = vs[1].Remove(0, 1);
+                    vs[0] = vs[0].Remove(0, 1);
+                    vs[0] = vs[0].Remove(vs[0].Length - 1, 1);
+                    switch (vs[1])
+                    {
+                        case "add":
+                            List<string> numbors = new List<string>();
+                            List<int> numbor = new List<int>();
+                            int all = 0 ;
+                            numbors = vs[0].Split('+').ToList();
+                            foreach(string num in numbors)
+                            {
+                                numbor.Add(Int32.Parse(num));
+                            }
+                            foreach(int numb in numbor)
+                            {
+                                all = all + numb;
+                            }
+                            Console.WriteLine("paddc " + all);
+                            break;
+                    }
+                    break;
+                default:
+                    Console.BackgroundColor = ConsoleColor.Red;
+                    Console.WriteLine("--- ERROR ---");
+                    Console.ResetColor();
+                    Console.WriteLine("Function " + vs[1].Split('(')[0] + " doesn't exist in the sys class!");
+                    Console.WriteLine("Line " + (linen + 1) + " " + line);
+                    break;
+            }
         }
     }
 }

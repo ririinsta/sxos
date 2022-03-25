@@ -23,7 +23,7 @@ namespace sxos
         }
         public void help()
         {
-
+            Console.WriteLine("-c <file> : compile");
         }
     }
 }
