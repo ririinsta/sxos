@@ -136,6 +136,43 @@ namespace sxos
                         Console.Write(cs222[1]);
                     }
                     break;
+                case "store":
+                    string[] xcs = { };
+                    string[] xcs2 = { };
+                    try
+                    {
+                        xcs = vs[1].Split('(');
+                    }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.WriteLine("--- ERROR ---");
+                        Console.ResetColor();
+                        Console.WriteLine("Parsing failed! Check your code!");
+                        Console.WriteLine("Error on line " + (linen + 1) + " " + line);
+                        return;
+                    }
+                    try
+                    {
+                        xcs2 = xcs[1].Split('"');
+                    }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.WriteLine("--- ERROR ---");
+                        Console.ResetColor();
+                        Console.WriteLine("Parsing failed! Check your code!");
+                        Console.WriteLine("Error on line " + (linen + 1) + " " + line);
+                    }
+                    foreach (string c in xcs)
+                    {
+                        Console.WriteLine(c);
+                    }
+                    foreach(string c in xcs2)
+                    {
+                        Console.WriteLine(c);
+                    }
+                    break;
                 default:
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.WriteLine("--- ERROR ---");
@@ -176,6 +213,25 @@ namespace sxos
                                 all = all + numb;
                             }
                             Console.WriteLine("paddc " + all);
+                            break;
+                        case "sub":
+                            List<string> _numbors = new List<string>();
+                            List<int> _numbor = new List<int>();
+                            int _all = 0;
+                            numbors = vs[0].Split('-').ToList();
+                            foreach (string num in numbors)
+                            {
+                                //Console.WriteLine(num);
+                                _numbor.Add(Int32.Parse(num));
+                            }
+                            _all = _numbor[0];
+                            _numbor.RemoveAt(0);
+                            foreach (int numb in _numbor)
+                            {
+                                //Console.WriteLine("all = " + _all + " numb = " + numb);
+                                _all = _all - numb;
+                            }
+                            Console.WriteLine("psubc " + _all);
                             break;
                     }
                     break;
